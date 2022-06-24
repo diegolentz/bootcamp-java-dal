@@ -1,6 +1,7 @@
+
 package clase7;
 
-public class Articulo {
+public abstract class Articulo {
 
 	private Long id;
 	private String nombre;
@@ -16,6 +17,24 @@ public class Articulo {
 		this.precio = precio;
 		this.urlImagen = urlImagen;
 	}
+	
+	public final void detalle() {
+		//el padre siempre hace lo suyo
+		System.out.println(this.getNombre());
+		System.out.println(this.getAutor());
+		//solo mostrar la img si tiene una, ¿como hago?
+		if(this.tieneImagen()) {//f5
+			System.out.println(this.getUrlImagen());
+		}else {
+			System.out.println("No tiene, muestro marca de agua");
+		}	
+		
+		//ahora el hijo hace su parte
+		this.detalleHijo();
+	}
+	
+	//si una clase tiene al menos un metodo abstracto, se debe declarar como abstracta.
+	public abstract void detalleHijo(); 
 	
 	//alt+shit+s
 	
@@ -74,11 +93,6 @@ public class Articulo {
 		}else {
 			System.err.println("No se puede asignar valores negativos");
 		}
-	}
-
-	public void detalle() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	/*void agregarAlCarrito(Carrito carrito) {
