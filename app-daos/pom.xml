@@ -7,16 +7,18 @@
   </parent>
   <artifactId>app-daos</artifactId>
   
-    <dependencies>
+   <dependencies>
   	<dependency>
   		<groupId>ar.com.educacionit</groupId>
   		<artifactId>app-domain</artifactId>
   		<version>1.0.0-SNAPSHOT</version>
   	</dependency>
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.29</version>
+	</dependency>
+
   </dependencies>
-  
-  
-  
-  
-  
 </project>
