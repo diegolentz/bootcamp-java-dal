@@ -50,7 +50,7 @@ public class CrearArticuloController {
 			
 			//obtengo marcasId y categoriasId
 			
-			articuloService.createArticulo(nuevo);
+			articuloService.create(nuevo);
 		} catch (ServiceException e) {
 			System.err.println(e.getMessage() + "," + e.getCause().getMessage());
 			
@@ -67,7 +67,7 @@ public class CrearArticuloController {
 				artQueExisteEnlaDB.setStock(artQueExisteEnlaDB.getStock() + nuevo.getStock());
 				artQueExisteEnlaDB.setTitulo(nuevo.getTitulo());
 				
-				articuloService.updateArticulo(artQueExisteEnlaDB);
+				articuloService.update(artQueExisteEnlaDB);
 			} catch (ServiceException e1) {
 				System.err.println(e1.getMessage() + "," + e.getCause());	
 			}
