@@ -9,7 +9,6 @@ import java.util.Date;
 
 import ar.com.educacionit.daos.ArticuloDao;
 import ar.com.educacionit.daos.db.AdministradorDeConexiones;
-import ar.com.educacionit.daos.db.exceptions.DuplicatedException;
 import ar.com.educacionit.daos.db.exceptions.GenericException;
 import ar.com.educacionit.domain.Articulo;
 
@@ -19,10 +18,12 @@ public class ArticuloDaoMysqlImpl extends JDBCBaseDao<Articulo> implements Artic
 		super("articulos");
 	}
 	
+	@Override
 	public String getSaveSQL() {
 		return "(TITULO,CODIGO, PRECIO, CATEGORIAS_ID, MARCAS_ID,FECHA_CREACION,STOCK) VALUES (?,?,?,?,?,?,?)";
 	}
 
+	@Override
 	public void saveData(Articulo entity, PreparedStatement st) throws SQLException {
 		st.setString(1, entity.getTitulo());
 		st.setString(2, entity.getCodigo());
@@ -70,6 +71,7 @@ public class ArticuloDaoMysqlImpl extends JDBCBaseDao<Articulo> implements Artic
 	}
 
 
+	@Override
 	public void updateData(Articulo entity, PreparedStatement st) throws SQLException {
 		int idx = 1;
 		if (entity.getTitulo() != null) {
@@ -94,6 +96,7 @@ public class ArticuloDaoMysqlImpl extends JDBCBaseDao<Articulo> implements Artic
 		
 	}
 
+	@Override
 	public String getUpdateSQL(Articulo entity) {
 		StringBuffer sql = new StringBuffer();
 		
@@ -117,17 +120,5 @@ public class ArticuloDaoMysqlImpl extends JDBCBaseDao<Articulo> implements Artic
 		}
 		
 		return sql.substring(0, sql.length() - 1).toString();
-	}
-
-	@Override
-	public void save(Articulo orden) throws GenericException, DuplicatedException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Articulo ordenToUpdate) throws GenericException {
-		// TODO Auto-generated method stub
-		
 	}
 }
