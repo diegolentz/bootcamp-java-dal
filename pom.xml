@@ -19,11 +19,11 @@
 	</properties>
 	
 	<modules>
-		<module>app-web</module>
 		<module>app-services</module>
 		<module>app-daos</module>
 		<module>app-domain</module>
-		<module>aoo-daos</module>
-		<module>app-servicess</module>
+		<module>app-web</module>
 	</modules>
+	
+	
 </project>
