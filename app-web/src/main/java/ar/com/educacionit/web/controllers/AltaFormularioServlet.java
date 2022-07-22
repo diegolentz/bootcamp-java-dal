@@ -1,3 +1,4 @@
+
 package ar.com.educacionit.web.controllers;
 
 import java.io.IOException;
@@ -13,31 +14,30 @@ import ar.com.educacionit.domain.Articulo;
 import ar.com.educacionit.services.ArticulosService;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.ArticulosServiceImpl;
+import ar.com.educacionit.web.enums.AttributesEnum;
+import ar.com.educacionit.web.enums.ViewsEnum;
 
 @WebServlet("/controller/AltaFormularioServlet")
-public class AltaFormularioServlet extends HttpServlet {
+public class AltaFormularioServlet extends BaseServlet {
 
+	private static final long serialVersionUID = -3953577187787582717L;
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4960537621212213518L;
-
 	//GET
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		String fecha = request.getParameter("fecha");//> String
 		
 		ArticulosService ar = new ArticulosServiceImpl();
+		//asumo una vista target
+		ViewsEnum target = ViewsEnum.REGISTRO_OK;
+		
 		try {
-			Collection<Articulo> list = ar.findAll();			
-			request.setAttribute("articulos", list);
-			//OK
-			getServletContext().getRequestDispatcher("/registroOk.jsp").forward(request, response);
+			Collection<Articulo> list = ar.findAll();		
+			setAttribute(AttributesEnum.ARTICULOS, request, list);
 		} catch (ServiceException e) {
 			//FAIL
-			getServletContext().getRequestDispatcher("/registroFail.jsp").forward(request, response);
+			target = ViewsEnum.REGISTRO_FAIL;
 		}
-		
+		redirect(target, request, response);
 	}
 }
