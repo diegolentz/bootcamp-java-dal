@@ -1,5 +1,5 @@
 
-package ar.com.educacionit.web.controllers;
+package ar.com.educacionit.web.controllers.console;
 
 import java.util.List;
 
