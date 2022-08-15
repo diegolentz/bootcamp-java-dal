@@ -2,6 +2,8 @@
 package ar.com.educacionit.web.jerseyclient.meli;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -30,7 +32,14 @@ public class MeiSiteRestClient {
 		//json dinamico
 		
 		List<MeliSite> user = response.readEntity(new GenericType<List<MeliSite>>() {});
+		
 		//List<MeliSite> user = response.readEntity(List.class);
 		System.out.println(user);
+		
+		Set<String> names = user.stream()
+				.map(site -> site.getName())
+				.collect(Collectors.toSet());
+				
+		System.out.println(names);
 	}
 }
