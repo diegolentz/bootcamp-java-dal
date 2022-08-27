@@ -10,14 +10,30 @@
   <packaging>war</packaging>
   <name>modulo web del bootcamp</name>
  
-  <dependencies>
+   <dependencies>
   	<dependency>
   		<groupId>ar.com.educacionit</groupId>
   		<artifactId>app-services</artifactId>
   		<version>1.0.0-SNAPSHOT</version>
   	</dependency>
   	
- 
+  	<!-- servlet+jsp TOMCAT 10-->
+  	<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api
+	<dependency>
+	    <groupId>jakarta.servlet</groupId>
+	    <artifactId>jakarta.servlet-api</artifactId>
+	    <version>5.0.0</version>
+	    <scope>provided</scope>
+	</dependency>
+	-->
+  	<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp/jakarta.servlet.jsp-api
+	<dependency>
+	    <groupId>jakarta.servlet.jsp</groupId>
+	    <artifactId>jakarta.servlet.jsp-api</artifactId>
+	    <version>3.0.0</version>
+	    <scope>provided</scope>
+	</dependency>
+	 -->
   	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 	<dependency>
 	    <groupId>javax.servlet</groupId>
@@ -80,17 +96,69 @@
 		  <artifactId>jaxb-impl</artifactId>
 		  <version>2.3.0</version>
 		</dependency>
+		
+		<!-- apache poi -->
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>5.2.2</version>
+		</dependency>
   </dependencies>
   
-  <build>
+ <build>
     <finalName>app-web</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
      <plugins>
-				<plugin>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
+				
+		
+            <plugin> 
+                <groupId>com.github.eirslett</groupId> 
+                <artifactId>frontend-maven-plugin</artifactId> 
+                <version>1.11.2</version> 
+			 	<!-- optional -->
+			    <configuration>
+			        <workingDirectory>src/main/webapp/webapp-react</workingDirectory>
+			    </configuration>
+                <executions> 
+                    <!-- Install node and npm --> 
+                    <execution> 
+                        <id>Install Node and NPM</id> 
+                        <goals> 
+                            <goal>install-node-and-npm</goal> 
+                        </goals> 
+                        <configuration> 
+                            <nodeVersion>v14.16.0</nodeVersion> 
+                        </configuration> 
+                    </execution> 
+ 
+                    <!-- clean install --> 
+                    <execution> 
+                        <id>npm install</id> 
+                        <goals> 
+                            <goal>npm</goal> 
+                        </goals> 
+                    </execution> 
+ 
+                    <!-- build app --> 
+                    <execution> 
+                        <id>npm run build</id> 
+                        <goals> 
+                            <goal>npm</goal> 
+                        </goals> 
+                        <configuration> 
+                            <arguments>run build</arguments> 
+                        </configuration> 
+                    </execution> 
+                </executions> 
+            </plugin> 
+            
+            		<!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+			
+					<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.2.2</version>
 				</plugin>
-				<!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
 			
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -100,10 +168,7 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
 				</plugin>
-				<plugin>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>3.2.2</version>
-				</plugin>
+			
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>2.5.2</version>
@@ -112,6 +177,20 @@
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>2.8.2</version>
 				</plugin>
+				
+				   <plugin> 
+                <artifactId>maven-clean-plugin</artifactId> 
+                <version>3.1.0</version> 
+                <configuration> 
+                    <filesets> 
+                        <fileset> 
+                            <directory>dist</directory> 
+                        </fileset> 
+                    </filesets> 
+                </configuration> 
+            </plugin> 
+ 
+				
 			</plugins>
 
     </pluginManagement>

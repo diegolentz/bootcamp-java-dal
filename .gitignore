@@ -89,4 +89,5 @@ local.properties
 .recommenders/
 
 # Codepro
-.codepro/node_modules
+.codepro/
+node_modules
