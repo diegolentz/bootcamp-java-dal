@@ -1,11 +1,14 @@
 
 package ar.com.educacionit.web.enums;
 
-public class DefaultAction implements IFormato {
+import java.io.Serializable;
+import java.util.Collection;
 
-	@Override
-	public void doAction() {
-		System.out.println("default action");
+public class DefaultAction implements IExportable {
+
+	public String exportar(Collection<Serializable> datos) {
+		return "";
 	}
+
 
 }

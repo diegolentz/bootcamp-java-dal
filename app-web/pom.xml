@@ -56,6 +56,18 @@
 	    <version>2.25.1</version>
 	</dependency>
 	
+	<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.4</version>
+		</dependency>
+		
+		<dependency>
+	        <groupId>com.fasterxml.jackson.core</groupId>
+	        <artifactId>jackson-annotations</artifactId>
+	        <version>2.5.4</version>
+	    </dependency>
+	
   	<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
 	<dependency>
 	    <groupId>org.glassfish.jersey.media</groupId>
@@ -86,15 +98,17 @@
 		  <artifactId>jaxb-api</artifactId>
 		  <version>2.3.0</version>
 		</dependency>
+		
 		<dependency>
 		  <groupId>com.sun.xml.bind</groupId>
 		  <artifactId>jaxb-core</artifactId>
 		  <version>2.3.0</version>
 		</dependency>
+		
 		<dependency>
-		  <groupId>com.sun.xml.bind</groupId>
-		  <artifactId>jaxb-impl</artifactId>
-		  <version>2.3.0</version>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.0</version>
 		</dependency>
 		
 		<!-- apache poi -->
@@ -104,6 +118,14 @@
 		    <artifactId>poi-ooxml</artifactId>
 		    <version>5.2.2</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.20.0</version>
+		</dependency>
+
   </dependencies>
   
  <build>

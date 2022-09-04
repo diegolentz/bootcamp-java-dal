@@ -1,7 +1,9 @@
 
 package ar.com.educacionit.services.parser;
 
-public class ArticuloDTO {
+import java.io.Serializable;
+
+public class ArticuloDTO implements Serializable{
 
 	private Long id;
 	private String title;
@@ -49,6 +51,14 @@ public class ArticuloDTO {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	
+	/**
+	 * return csv row
+	 * @return
+	 */
+	public String toLine() {
+		return id +","+ title +","+ code +","+ price;
 	}
 
 	@Override
