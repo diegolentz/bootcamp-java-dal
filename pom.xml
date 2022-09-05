@@ -40,7 +40,7 @@
 		<module>app-daos</module>
 		<module>app-domain</module>
 		<module>app-web</module>
-		<module>react-webapp</module> 
+	<!--	<module>react-webapp</module>  -->
 	</modules>
 	
 	
