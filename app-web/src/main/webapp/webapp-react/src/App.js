@@ -8,7 +8,7 @@ function App() {
   // console.log(styles);
 
   return (
-    <BrowserRouter basename='/app-web'>
+    <BrowserRouter basename='/'>// /app-web para probar localmente
       <header>
         <Link to={'/'}>
           <div>
